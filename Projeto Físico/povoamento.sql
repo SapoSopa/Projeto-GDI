@@ -46,15 +46,15 @@ INSERT INTO CONTATO (CPF, Contato) VALUES ('74185296355', '81944443333');
 INSERT INTO CONTATO (CPF, Contato) VALUES ('15935785266', '81933332222');
 INSERT INTO CONTATO (CPF, Contato) VALUES ('85274196377', '81922221111');
 
--- Aluno (CPF_Aluno, ID_Plano, CREF_PT)
-INSERT INTO ALUNO (CPF_Aluno, ID_Plano, CREF_PT) VALUES ('12345678900', 1, '123456-G/SP'); -- Ana Pereira vinculada a Carlos Almeida
-INSERT INTO ALUNO (CPF_Aluno, ID_Plano, CREF_PT) VALUES ('98765432111', 2, NULL); -- Bruno Santos sem Personal Trainer
-INSERT INTO ALUNO (CPF_Aluno, ID_Plano, CREF_PT) VALUES ('45612378922', 3, '654321-M/RJ'); -- Camila Rocha vinculada a Mariana Souza
-INSERT INTO ALUNO (CPF_Aluno, ID_Plano, CREF_PT) VALUES ('78945612333', 1, NULL); -- Daniel Lima sem Personal Trainer
-INSERT INTO ALUNO (CPF_Aluno, ID_Plano, CREF_PT) VALUES ('32165498744', 2, '987654-P/MG'); -- Eduardo Silva vinculado a Fernando Oliveira
-INSERT INTO ALUNO (CPF_Aluno, ID_Plano, CREF_PT) VALUES ('74185296355', 3, '123456-G/SP'); -- Fernanda Costa vinculada a Carlos Almeida
-INSERT INTO ALUNO (CPF_Aluno, ID_Plano, CREF_PT) VALUES ('15935785266', 1, NULL); -- Gabriela Martins sem Personal Trainer
-INSERT INTO ALUNO (CPF_Aluno, ID_Plano, CREF_PT) VALUES ('85274196377', 2, '654321-M/RJ'); -- Henrique Santos vinculado a Mariana Souza
+-- Aluno (CPF, ID_Plano, CREF_PT)
+INSERT INTO ALUNO (CPF, ID_Plano, CREF_PT) VALUES ('12345678900', 1, '123456-G/SP'); -- Ana Pereira vinculada a Carlos Almeida
+INSERT INTO ALUNO (CPF, ID_Plano, CREF_PT) VALUES ('98765432111', 2, NULL); -- Bruno Santos sem Personal Trainer
+INSERT INTO ALUNO (CPF, ID_Plano, CREF_PT) VALUES ('45612378922', 3, '654321-M/RJ'); -- Camila Rocha vinculada a Mariana Souza
+INSERT INTO ALUNO (CPF, ID_Plano, CREF_PT) VALUES ('78945612333', 1, NULL); -- Daniel Lima sem Personal Trainer
+INSERT INTO ALUNO (CPF, ID_Plano, CREF_PT) VALUES ('32165498744', 2, '987654-P/MG'); -- Eduardo Silva vinculado a Fernando Oliveira
+INSERT INTO ALUNO (CPF, ID_Plano, CREF_PT) VALUES ('74185296355', 3, '123456-G/SP'); -- Fernanda Costa vinculada a Carlos Almeida
+INSERT INTO ALUNO (CPF, ID_Plano, CREF_PT) VALUES ('15935785266', 1, NULL); -- Gabriela Martins sem Personal Trainer
+INSERT INTO ALUNO (CPF, ID_Plano, CREF_PT) VALUES ('85274196377', 2, '654321-M/RJ'); -- Henrique Santos vinculado a Mariana Souza
 
 -- Funcionário(CPF_Func, Salário, CPF_CHEFE)
 -- Chefe (CPF_CHEFE IS NULL)
