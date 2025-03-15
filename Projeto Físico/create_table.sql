@@ -4,42 +4,26 @@ CREATE TABLE Plano (
     Valor FLOAT
 );
 
-CREATE TABLE PersonalTrainer (
+CREATE TABLE Personal_Trainer (
     CREF VARCHAR2(11) CONSTRAINT PK_PersonalTreiner PRIMARY KEY,
     Nome VARCHAR2(50) NOT NULL
 );
 
-CREATE TABLE Equipamento (
-    codigo NUMBER(2) CONSTRAINT PK_Equipamento PRIMARY KEY
+CREATE TABLE Equipamento( 
+	Cod INT GENERATED ALWAYS AS IDENTITY (START WITH 1 INCREMENT BY 1) NOT NULL, 
+	CONSTRAINT PK_Equipamento PRIMARY KEY (Cod) 
 );
 
-CREATE TABLE SEQUENCE SEQ_equipamento (
-    START WITH 1
-    INCREMENT BY 1
-    NOCACHE;
+CREATE TABLE Exercicio( 
+	ID INT GENERATED ALWAYS AS IDENTITY (START WITH 1 INCREMENT BY 1) NOT NULL, 
+	CONSTRAINT PK_Exercicio PRIMARY KEY (ID) 
 );
 
-CREATE OR REPLACE TRIGGER trg_equipamento
-BEFORE INSERT ON Equipamento
-FOR EACH ROW
-BEGIN
-    IF :NEW.codigo IS NULL THEN
-        SELECT seq_equipamento.NEXTVAL INTO :NEW.codigo FROM dual;
-    END IF;
-END;
-
-CREATE TABLE AvaliacaoFisica (
-    ID NUMBER(3) CONSTRAINT PK_AvaicaoFisica PRIMARY KEY
-);
-
-CREATE TABLE Exercicio (
-    ID NUMBER(3) CONSTRAINT Exercicio PRIMARY KEY
-);
-
-CREATE TABLE UsuarioAcademia (
-    CPF NUMBER(11) CONSTRAINT PK_UsuarioAcademia PRIMARY KEY,
+CREATE TABLE Usuario_da_Academia (
+    CPF VARCHAR2(11) CONSTRAINT PK_UsuarioAcademia PRIMARY KEY,
     Nome VARCHAR2(50) not null,
     Bairro VARCHAR2(50) not null,
-    Ruas VARCHAR2(50) not null,
-    NCasa NUMBER(5)
+    Rua VARCHAR2(50) not null,
+    NCasa VARCHAR2(5) not null,
+    Nascimento DATE not null
 );
