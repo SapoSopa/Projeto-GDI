@@ -12,7 +12,7 @@ INSERT INTO PERSONAL_TRAINER VALUES ('987654-P/MG', 'Fernando Oliveira');
 -- Equipamento (COD)
 BEGIN
     FOR i IN 1..15 LOOP
-        INSERT INTO COD VALUES (DEFAULT);
+        INSERT INTO Equipamento VALUES (DEFAULT);
     END LOOP;
     COMMIT;
 END;
