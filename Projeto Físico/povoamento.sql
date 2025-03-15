@@ -20,7 +20,7 @@ END;
 -- Exercicios (ID)
 BEGIN
     FOR i IN 1..5 LOOP
-        INSERT INTO ID VALUES (DEFAULT);
+        INSERT INTO Exercicio VALUES (DEFAULT);
     END LOOP;
     COMMIT;
 END;
