@@ -12,7 +12,7 @@ INSERT INTO PERSONAL_TRAINER VALUES ('987654-P/MG', 'Fernando Oliveira');
 -- Equipamento (COD)
 BEGIN
     FOR i IN 1..15 LOOP
-        INSERT INTO Equipamento VALUES (DEFAULT);
+        INSERT INTO EQUIPAMENTO VALUES (DEFAULT);
     END LOOP;
     COMMIT;
 END;
@@ -20,40 +20,40 @@ END;
 -- Exercicios (ID)
 BEGIN
     FOR i IN 1..5 LOOP
-        INSERT INTO Exercicio VALUES (DEFAULT);
+        INSERT INTO EXERCICIO VALUES (DEFAULT);
     END LOOP;
     COMMIT;
 END;
 
 -- Usuario_da_Academia (CPF, Nome, Endereço_Bairro, Endereço_Rua, Endereço_NCasa, Nascimento)
-INSERT INTO USUARIO_DA_ACADEMIA (CPF, Nome, Endereço_Bairro, Endereço_Rua, Endereço_NCasa, Nascimento) VALUES ('12345678900', 'Ana Pereira', 'Centro', 'Rua A', '101', TO_DATE('12-03-1995', 'DD-MM-YYYY')),
-INSERT INTO USUARIO_DA_ACADEMIA (CPF, Nome, Endereço_Bairro, Endereço_Rua, Endereço_NCasa, Nascimento) VALUES ('98765432111', 'Bruno Santos', 'Boa Viagem', 'Rua B', '202', TO_DATE('1998-07-25', 'DD-MM-YYYY')),
-INSERT INTO USUARIO_DA_ACADEMIA (CPF, Nome, Endereço_Bairro, Endereço_Rua, Endereço_NCasa, Nascimento) VALUES ('45612378922', 'Camila Rocha', 'Recife Antigo', 'Rua C', '303', TO_DATE('1992-11-10', 'DD-MM-YYYY')),
-INSERT INTO USUARIO_DA_ACADEMIA (CPF, Nome, Endereço_Bairro, Endereço_Rua, Endereço_NCasa, Nascimento) VALUES ('78945612333', 'Daniel Lima', 'Pina', 'Rua D', '404', TO_DATE('2000-05-30', 'DD-MM-YYYY')),
-INSERT INTO USUARIO_DA_ACADEMIA (CPF, Nome, Endereço_Bairro, Endereço_Rua, Endereço_NCasa, Nascimento) VALUES ('32165498744', 'Eduardo Silva', 'Casa Forte', 'Rua E', '505', TO_DATE('1993-09-15', 'DD-MM-YYYY')),
-INSERT INTO USUARIO_DA_ACADEMIA (CPF, Nome, Endereço_Bairro, Endereço_Rua, Endereço_NCasa, Nascimento) VALUES ('74185296355', 'Fernanda Costa', 'Boa Vista', 'Rua F', '606', TO_DATE('1996-01-20', 'DD-MM-YYYY')),
-INSERT INTO USUARIO_DA_ACADEMIA (CPF, Nome, Endereço_Bairro, Endereço_Rua, Endereço_NCasa, Nascimento) VALUES ('15935785266', 'Gabriela Martins', 'Tamarineira', 'Rua G', '707', TO_DATE('1999-04-05', 'DD-MM-YYYY')),
+INSERT INTO USUARIO_DA_ACADEMIA (CPF, Nome, Endereço_Bairro, Endereço_Rua, Endereço_NCasa, Nascimento) VALUES ('12345678900', 'Ana Pereira', 'Centro', 'Rua A', '101', TO_DATE('12-03-1995', 'DD-MM-YYYY'));
+INSERT INTO USUARIO_DA_ACADEMIA (CPF, Nome, Endereço_Bairro, Endereço_Rua, Endereço_NCasa, Nascimento) VALUES ('98765432111', 'Bruno Santos', 'Boa Viagem', 'Rua B', '202', TO_DATE('1998-07-25', 'DD-MM-YYYY'));
+INSERT INTO USUARIO_DA_ACADEMIA (CPF, Nome, Endereço_Bairro, Endereço_Rua, Endereço_NCasa, Nascimento) VALUES ('45612378922', 'Camila Rocha', 'Recife Antigo', 'Rua C', '303', TO_DATE('1992-11-10', 'DD-MM-YYYY'));
+INSERT INTO USUARIO_DA_ACADEMIA (CPF, Nome, Endereço_Bairro, Endereço_Rua, Endereço_NCasa, Nascimento) VALUES ('78945612333', 'Daniel Lima', 'Pina', 'Rua D', '404', TO_DATE('2000-05-30', 'DD-MM-YYYY'));
+INSERT INTO USUARIO_DA_ACADEMIA (CPF, Nome, Endereço_Bairro, Endereço_Rua, Endereço_NCasa, Nascimento) VALUES ('32165498744', 'Eduardo Silva', 'Casa Forte', 'Rua E', '505', TO_DATE('1993-09-15', 'DD-MM-YYYY'));
+INSERT INTO USUARIO_DA_ACADEMIA (CPF, Nome, Endereço_Bairro, Endereço_Rua, Endereço_NCasa, Nascimento) VALUES ('74185296355', 'Fernanda Costa', 'Boa Vista', 'Rua F', '606', TO_DATE('1996-01-20', 'DD-MM-YYYY'));
+INSERT INTO USUARIO_DA_ACADEMIA (CPF, Nome, Endereço_Bairro, Endereço_Rua, Endereço_NCasa, Nascimento) VALUES ('15935785266', 'Gabriela Martins', 'Tamarineira', 'Rua G', '707', TO_DATE('1999-04-05', 'DD-MM-YYYY'));
 INSERT INTO USUARIO_DA_ACADEMIA (CPF, Nome, Endereço_Bairro, Endereço_Rua, Endereço_NCasa, Nascimento) VALUES ('85274196377', 'Henrique Santos', 'Graças', 'Rua H', '808', TO_DATE('1994-06-18', 'DD-MM-YYYY'));
 
--- COontato (CPF, Contato)
-INSERT INTO CONTATO (CPF, Contato) VALUES ('12345678900', '81999998888'),
-INSERT INTO CONTATO (CPF, Contato) VALUES ('12345678900', '81333334444'),
-INSERT INTO CONTATO (CPF, Contato) VALUES ('98765432111', '81988887777'),
-INSERT INTO CONTATO (CPF, Contato) VALUES ('45612378922', '81977776666'),
-INSERT INTO CONTATO (CPF, Contato) VALUES ('78945612333', '81966665555'),
-INSERT INTO CONTATO (CPF, Contato) VALUES ('32165498744', '81955554444'),
-INSERT INTO CONTATO (CPF, Contato) VALUES ('74185296355', '81944443333'),
-INSERT INTO CONTATO (CPF, Contato) VALUES ('15935785266', '81933332222'),
+-- Contato (CPF, Contato)
+INSERT INTO CONTATO (CPF, Contato) VALUES ('12345678900', '81999998888');
+INSERT INTO CONTATO (CPF, Contato) VALUES ('12345678900', '81333334444');
+INSERT INTO CONTATO (CPF, Contato) VALUES ('98765432111', '81988887777');
+INSERT INTO CONTATO (CPF, Contato) VALUES ('45612378922', '81977776666');
+INSERT INTO CONTATO (CPF, Contato) VALUES ('78945612333', '81966665555');
+INSERT INTO CONTATO (CPF, Contato) VALUES ('32165498744', '81955554444');
+INSERT INTO CONTATO (CPF, Contato) VALUES ('74185296355', '81944443333');
+INSERT INTO CONTATO (CPF, Contato) VALUES ('15935785266', '81933332222');
 INSERT INTO CONTATO (CPF, Contato) VALUES ('85274196377', '81922221111');
 
 -- Aluno (CPF_Aluno, ID_Plano, CREF_PT)
-INSERT INTO ALUNO (CPF_Aluno, ID_Plano, CREF_PT) VALUES ('12345678900', 1, '123456-G/SP'), -- Ana Pereira vinculada a Carlos Almeida
-INSERT INTO ALUNO (CPF_Aluno, ID_Plano, CREF_PT) VALUES ('98765432111', 2, NULL), -- Bruno Santos sem Personal Trainer
-INSERT INTO ALUNO (CPF_Aluno, ID_Plano, CREF_PT) VALUES ('45612378922', 3, '654321-M/RJ'), -- Camila Rocha vinculada a Mariana Souza
-INSERT INTO ALUNO (CPF_Aluno, ID_Plano, CREF_PT) VALUES ('78945612333', 1, NULL), -- Daniel Lima sem Personal Trainer
-INSERT INTO ALUNO (CPF_Aluno, ID_Plano, CREF_PT) VALUES ('32165498744', 2, '987654-P/MG'), -- Eduardo Silva vinculado a Fernando Oliveira
-INSERT INTO ALUNO (CPF_Aluno, ID_Plano, CREF_PT) VALUES ('74185296355', 3, '123456-G/SP'), -- Fernanda Costa vinculada a Carlos Almeida
-INSERT INTO ALUNO (CPF_Aluno, ID_Plano, CREF_PT) VALUES ('15935785266', 1, NULL), -- Gabriela Martins sem Personal Trainer
+INSERT INTO ALUNO (CPF_Aluno, ID_Plano, CREF_PT) VALUES ('12345678900', 1, '123456-G/SP'); -- Ana Pereira vinculada a Carlos Almeida
+INSERT INTO ALUNO (CPF_Aluno, ID_Plano, CREF_PT) VALUES ('98765432111', 2, NULL); -- Bruno Santos sem Personal Trainer
+INSERT INTO ALUNO (CPF_Aluno, ID_Plano, CREF_PT) VALUES ('45612378922', 3, '654321-M/RJ'); -- Camila Rocha vinculada a Mariana Souza
+INSERT INTO ALUNO (CPF_Aluno, ID_Plano, CREF_PT) VALUES ('78945612333', 1, NULL); -- Daniel Lima sem Personal Trainer
+INSERT INTO ALUNO (CPF_Aluno, ID_Plano, CREF_PT) VALUES ('32165498744', 2, '987654-P/MG'); -- Eduardo Silva vinculado a Fernando Oliveira
+INSERT INTO ALUNO (CPF_Aluno, ID_Plano, CREF_PT) VALUES ('74185296355', 3, '123456-G/SP'); -- Fernanda Costa vinculada a Carlos Almeida
+INSERT INTO ALUNO (CPF_Aluno, ID_Plano, CREF_PT) VALUES ('15935785266', 1, NULL); -- Gabriela Martins sem Personal Trainer
 INSERT INTO ALUNO (CPF_Aluno, ID_Plano, CREF_PT) VALUES ('85274196377', 2, '654321-M/RJ'); -- Henrique Santos vinculado a Mariana Souza
 
 -- Funcionário(CPF_Func, Salário, CPF_CHEFE)
@@ -72,11 +72,11 @@ INSERT INTO FUNCIONARIO VALUES ('55556666777', 6000.00, '11122233344');
 INSERT INTO FUNCIONARIO VALUES ('66667777888', 6500.00, '11122233344');
 
 -- Avaliação Física (Data, CPF_Aluno, CPF_Func)
-INSERT INTO AVALIACAO_FISICA (Data, CPF_Aluno, CPF_Func) VALUES ('2024-03-01', '12345678900', '55566677788'), -- Ana Pereira avaliada por funcionário 555
-INSERT INTO AVALIACAO_FISICA (Data, CPF_Aluno, CPF_Func) VALUES ('2024-03-05', '98765432111', '99988877766'), -- Bruno Santos avaliado por funcionário 999
-INSERT INTO AVALIACAO_FISICA (Data, CPF_Aluno, CPF_Func) VALUES ('2024-03-10', '45612378922', '22233344455'), -- Camila Rocha avaliada por funcionário 222
-INSERT INTO AVALIACAO_FISICA (Data, CPF_Aluno, CPF_Func) VALUES ('2024-03-15', '78945612333', '77788899900'), -- Daniel Lima avaliado por funcionário 777
-INSERT INTO AVALIACAO_FISICA (Data, CPF_Aluno, CPF_Func) VALUES ('2024-03-20', '32165498744', '55566677788'), -- Eduardo Silva avaliado pelo mesmo funcionário 555
+INSERT INTO AVALIACAO_FISICA (Data, CPF_Aluno, CPF_Func) VALUES ('2024-03-01', '12345678900', '55566677788'); -- Ana Pereira avaliada por funcionário 555
+INSERT INTO AVALIACAO_FISICA (Data, CPF_Aluno, CPF_Func) VALUES ('2024-03-05', '98765432111', '99988877766'); -- Bruno Santos avaliado por funcionário 999
+INSERT INTO AVALIACAO_FISICA (Data, CPF_Aluno, CPF_Func) VALUES ('2024-03-10', '45612378922', '22233344455'); -- Camila Rocha avaliada por funcionário 222
+INSERT INTO AVALIACAO_FISICA (Data, CPF_Aluno, CPF_Func) VALUES ('2024-03-15', '78945612333', '77788899900'); -- Daniel Lima avaliado por funcionário 777
+INSERT INTO AVALIACAO_FISICA (Data, CPF_Aluno, CPF_Func) VALUES ('2024-03-20', '32165498744', '55566677788'); -- Eduardo Silva avaliado pelo mesmo funcionário 555
 
 -- Instrutor (CPF)
 INSERT INTO INSTRUTOR VALUES ('55566677788');
@@ -104,12 +104,12 @@ INSERT INTO Administracao (CPF, Funcao) VALUES ('66667777888', 'RH')
 ON DUPLICATE KEY UPDATE Funcao = 'RH';
 
 -- TEM (CPF_Aluno, CPF_Func)
-INSERT INTO TEM (CPF_Aluno, CPF_Func) VALUES ('12345678900', '55566677788'), -- Ana Pereira com instrutor 555
-INSERT INTO TEM (CPF_Aluno, CPF_Func) VALUES ('98765432111', '99988877766'), -- Bruno Santos com instrutor 999
-INSERT INTO TEM (CPF_Aluno, CPF_Func) VALUES ('45612378922', '22233344455'), -- Camila Rocha com instrutor 222
-INSERT INTO TEM (CPF_Aluno, CPF_Func) VALUES ('78945612333', '77788899900'), -- Daniel Lima com instrutor 777
-INSERT INTO TEM (CPF_Aluno, CPF_Func) VALUES ('32165498744', '55566677788'), -- Eduardo Silva com instrutor 555
-INSERT INTO TEM (CPF_Aluno, CPF_Func) VALUES ('74185296355', '99988877766'), -- Fernanda Costa com instrutor 999
+INSERT INTO TEM (CPF_Aluno, CPF_Func) VALUES ('12345678900', '55566677788'); -- Ana Pereira com instrutor 555
+INSERT INTO TEM (CPF_Aluno, CPF_Func) VALUES ('98765432111', '99988877766'); -- Bruno Santos com instrutor 999
+INSERT INTO TEM (CPF_Aluno, CPF_Func) VALUES ('45612378922', '22233344455'); -- Camila Rocha com instrutor 222
+INSERT INTO TEM (CPF_Aluno, CPF_Func) VALUES ('78945612333', '77788899900'); -- Daniel Lima com instrutor 777
+INSERT INTO TEM (CPF_Aluno, CPF_Func) VALUES ('32165498744', '55566677788'); -- Eduardo Silva com instrutor 555
+INSERT INTO TEM (CPF_Aluno, CPF_Func) VALUES ('74185296355', '99988877766'); -- Fernanda Costa com instrutor 999
 
 -- Ficha de Treino 
 INSERT INTO Ficha_de_Treino  (CPF_Aluno, CPF_Func) VALUES ('12345678910', '10987654321');
