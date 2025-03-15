@@ -1,9 +1,3 @@
-/*
-Administração
-Tem
-*/
-
-
  -- Ficha de Treino 
 INSERT INTO Ficha_de_Treino  (CPF_Aluno, CPF_Func) 
 VALUES ('123456789-10', '109876543-21')
@@ -177,3 +171,75 @@ INSERT INTO REALIZA VALUES ('85274196377', '2025-03-07');
 INSERT INTO REALIZA VALUES ('85274196377', '2025-03-08');
 INSERT INTO REALIZA VALUES ('85274196377', '2025-03-09');
 INSERT INTO REALIZA VALUES ('85274196377', '2025-03-10');
+
+
+INSERT INTO USUARIO_DA_ACADEMIA (CPF, Nome, Endereço_Bairro, Endereço_Rua, Endereço_NCasa, Nascimento) VALUES 
+('12345678900', 'Ana Pereira', 'Centro', 'Rua A', '101', '1995-03-12'),
+('98765432111', 'Bruno Santos', 'Boa Viagem', 'Rua B', '202', '1998-07-25'),
+('45612378922', 'Camila Rocha', 'Recife Antigo', 'Rua C', '303', '1992-11-10'),
+('78945612333', 'Daniel Lima', 'Pina', 'Rua D', '404', '2000-05-30'),
+('32165498744', 'Eduardo Silva', 'Casa Forte', 'Rua E', '505', '1993-09-15'),
+('74185296355', 'Fernanda Costa', 'Boa Vista', 'Rua F', '606', '1996-01-20'),
+('15935785266', 'Gabriela Martins', 'Tamarineira', 'Rua G', '707', '1999-04-05'),
+('85274196377', 'Henrique Santos', 'Graças', 'Rua H', '808', '1994-06-18');
+
+
+INSERT INTO CONTATO (CPF, Contato) VALUES 
+('12345678900', '81999998888'),
+('12345678900', '81333334444'),
+('98765432111', '81988887777'),
+('45612378922', '81977776666'),
+('78945612333', '81966665555'),
+('32165498744', '81955554444'),
+('74185296355', '81944443333'),
+('15935785266', '81933332222'),
+('85274196377', '81922221111');
+
+INSERT INTO ALUNO (CPF_Aluno, ID_Plano, CREF_PT) VALUES 
+('12345678900', 1, '123456-G/SP'), -- Ana Pereira vinculada a Carlos Almeida
+('98765432111', 2, NULL), -- Bruno Santos sem Personal Trainer
+('45612378922', 3, '654321-M/RJ'), -- Camila Rocha vinculada a Mariana Souza
+('78945612333', 1, NULL), -- Daniel Lima sem Personal Trainer
+('32165498744', 2, '987654-P/MG'), -- Eduardo Silva vinculado a Fernando Oliveira
+('74185296355', 3, '123456-G/SP'), -- Fernanda Costa vinculada a Carlos Almeida
+('15935785266', 1, NULL), -- Gabriela Martins sem Personal Trainer
+('85274196377', 2, '654321-M/RJ'); -- Henrique Santos vinculado a Mariana Souza
+
+
+INSERT INTO ACOMPANHANTE (CPF, Nome) VALUES 
+('12345678900', 'Lucas Mendes'), -- Lucas veio como acompanhante de Ana Pereira
+('98765432111', 'Paula Oliveira'), -- Paula veio como acompanhante de Bruno Santos
+('45612378922', 'Ricardo Nogueira'); -- Ricardo veio como acompanhante de Camila Rocha
+
+
+-- Povoamento da tabela Avaliação Física
+INSERT INTO AVALIACAO_FISICA (Data, CPF_Aluno, CPF_Func) VALUES 
+('2024-03-01', '12345678900', '55566677788'), -- Ana Pereira avaliada por funcionário 555
+('2024-03-05', '98765432111', '99988877766'), -- Bruno Santos avaliado por funcionário 999
+('2024-03-10', '45612378922', '22233344455'), -- Camila Rocha avaliada por funcionário 222
+('2024-03-15', '78945612333', '77788899900'), -- Daniel Lima avaliado por funcionário 777
+( '2024-03-20', '32165498744', '55566677788'), -- Eduardo Silva avaliado pelo mesmo funcionário 555
+
+-- Povoamento da tabela Tem (Associação entre Alunos e Instrutores)
+INSERT INTO TEM (CPF_Aluno, CPF_Func) VALUES 
+('12345678900', '55566677788'), -- Ana Pereira com instrutor 555
+('98765432111', '99988877766'), -- Bruno Santos com instrutor 999
+('45612378922', '22233344455'), -- Camila Rocha com instrutor 222
+('78945612333', '77788899900'), -- Daniel Lima com instrutor 777
+('32165498744', '55566677788'), -- Eduardo Silva com instrutor 555
+('74185296355', '99988877766'), -- Fernanda Costa com instrutor 999
+
+
+BEGIN
+    FOR i IN 1..10 LOOP
+        INSERT INTO Equipamento VALUES (DEFAULT);
+    END LOOP;
+    COMMIT;
+END;
+
+BEGIN
+    FOR i IN 1..10 LOOP
+        INSERT INTO Exercicio VALUES (DEFAULT);
+    END LOOP;
+    COMMIT;
+END;
