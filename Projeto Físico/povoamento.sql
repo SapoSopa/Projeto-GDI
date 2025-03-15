@@ -26,14 +26,14 @@ BEGIN
 END;
 
 -- Usuario_da_Academia (CPF, Nome, Endereço_Bairro, Endereço_Rua, Endereço_NCasa, Nascimento)
-INSERT INTO USUARIO_DA_ACADEMIA (CPF, Nome, Endereço_Bairro, Endereço_Rua, Endereço_NCasa, Nascimento) VALUES ('12345678900', 'Ana Pereira', 'Centro', 'Rua A', '101', TO_DATE('12-03-1995', 'DD-MM-YYYY'));
-INSERT INTO USUARIO_DA_ACADEMIA (CPF, Nome, Endereço_Bairro, Endereço_Rua, Endereço_NCasa, Nascimento) VALUES ('98765432111', 'Bruno Santos', 'Boa Viagem', 'Rua B', '202', TO_DATE('1998-07-25', 'DD-MM-YYYY'));
-INSERT INTO USUARIO_DA_ACADEMIA (CPF, Nome, Endereço_Bairro, Endereço_Rua, Endereço_NCasa, Nascimento) VALUES ('45612378922', 'Camila Rocha', 'Recife Antigo', 'Rua C', '303', TO_DATE('1992-11-10', 'DD-MM-YYYY'));
-INSERT INTO USUARIO_DA_ACADEMIA (CPF, Nome, Endereço_Bairro, Endereço_Rua, Endereço_NCasa, Nascimento) VALUES ('78945612333', 'Daniel Lima', 'Pina', 'Rua D', '404', TO_DATE('2000-05-30', 'DD-MM-YYYY'));
-INSERT INTO USUARIO_DA_ACADEMIA (CPF, Nome, Endereço_Bairro, Endereço_Rua, Endereço_NCasa, Nascimento) VALUES ('32165498744', 'Eduardo Silva', 'Casa Forte', 'Rua E', '505', TO_DATE('1993-09-15', 'DD-MM-YYYY'));
-INSERT INTO USUARIO_DA_ACADEMIA (CPF, Nome, Endereço_Bairro, Endereço_Rua, Endereço_NCasa, Nascimento) VALUES ('74185296355', 'Fernanda Costa', 'Boa Vista', 'Rua F', '606', TO_DATE('1996-01-20', 'DD-MM-YYYY'));
-INSERT INTO USUARIO_DA_ACADEMIA (CPF, Nome, Endereço_Bairro, Endereço_Rua, Endereço_NCasa, Nascimento) VALUES ('15935785266', 'Gabriela Martins', 'Tamarineira', 'Rua G', '707', TO_DATE('1999-04-05', 'DD-MM-YYYY'));
-INSERT INTO USUARIO_DA_ACADEMIA (CPF, Nome, Endereço_Bairro, Endereço_Rua, Endereço_NCasa, Nascimento) VALUES ('85274196377', 'Henrique Santos', 'Graças', 'Rua H', '808', TO_DATE('1994-06-18', 'DD-MM-YYYY'));
+INSERT INTO USUARIO_DA_ACADEMIA (CPF, Nome, Bairro, Rua, NCasa, Nascimento) VALUES ('12345678900', 'Ana Pereira', 'Centro', 'Rua A', '101', TO_DATE('12-03-1995', 'DD-MM-YYYY'));
+INSERT INTO USUARIO_DA_ACADEMIA (CPF, Nome, Bairro, Rua, NCasa, Nascimento) VALUES ('98765432111', 'Bruno Santos', 'Boa Viagem', 'Rua B', '202', TO_DATE('1998-07-25', 'DD-MM-YYYY'));
+INSERT INTO USUARIO_DA_ACADEMIA (CPF, Nome, Bairro, Rua, NCasa, Nascimento) VALUES ('45612378922', 'Camila Rocha', 'Recife Antigo', 'Rua C', '303', TO_DATE('1992-11-10', 'DD-MM-YYYY'));
+INSERT INTO USUARIO_DA_ACADEMIA (CPF, Nome, Bairro, Rua, NCasa, Nascimento) VALUES ('78945612333', 'Daniel Lima', 'Pina', 'Rua D', '404', TO_DATE('2000-05-30', 'DD-MM-YYYY'));
+INSERT INTO USUARIO_DA_ACADEMIA (CPF, Nome, Bairro, Rua, NCasa, Nascimento) VALUES ('32165498744', 'Eduardo Silva', 'Casa Forte', 'Rua E', '505', TO_DATE('1993-09-15', 'DD-MM-YYYY'));
+INSERT INTO USUARIO_DA_ACADEMIA (CPF, Nome, Bairro, Rua, NCasa, Nascimento) VALUES ('74185296355', 'Fernanda Costa', 'Boa Vista', 'Rua F', '606', TO_DATE('1996-01-20', 'DD-MM-YYYY'));
+INSERT INTO USUARIO_DA_ACADEMIA (CPF, Nome, Bairro, Rua, NCasa, Nascimento) VALUES ('15935785266', 'Gabriela Martins', 'Tamarineira', 'Rua G', '707', TO_DATE('1999-04-05', 'DD-MM-YYYY'));
+INSERT INTO USUARIO_DA_ACADEMIA (CPF, Nome, Bairro, Rua, NCasa, Nascimento) VALUES ('85274196377', 'Henrique Santos', 'Graças', 'Rua H', '808', TO_DATE('1994-06-18', 'DD-MM-YYYY'));
 
 -- Contato (CPF, Contato)
 INSERT INTO CONTATO (CPF, Contato) VALUES ('12345678900', '81999998888');
