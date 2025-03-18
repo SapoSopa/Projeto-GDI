@@ -130,12 +130,12 @@ INSERT INTO TEM (CPF_Aluno, CPF_Instrutor) VALUES ('32165498744', '55566677788')
 INSERT INTO TEM (CPF_Aluno, CPF_Instrutor) VALUES ('74185296355', '99988877766');
 
 -- Ficha de Treino 
-INSERT INTO Ficha_de_Treino (ID_Exercicio, CPF_Aluno, CPF_Instrutor) VALUES (1, '12345678900', '55566677788');
-INSERT INTO Ficha_de_Treino (ID_Exercicio, CPF_Aluno, CPF_Instrutor) VALUES (1, '98765432111', '99988877766');
-INSERT INTO Ficha_de_Treino (ID_Exercicio, CPF_Aluno, CPF_Instrutor) VALUES (2, '45612378922', '22233344455');
-INSERT INTO Ficha_de_Treino (ID_Exercicio, CPF_Aluno, CPF_Instrutor) VALUES (3, '78945612333', '77788899900');
-INSERT INTO Ficha_de_Treino (ID_Exercicio, CPF_Aluno, CPF_Instrutor) VALUES (4, '32165498744', '55566677788');
-INSERT INTO Ficha_de_Treino (ID_Exercicio, CPF_Aluno, CPF_Instrutor) VALUES (5, '74185296355', '99988877766');
+INSERT INTO Ficha_de_Treino (CPF_Aluno, CPF_Instrutor) VALUES ('12345678900', '55566677788');
+INSERT INTO Ficha_de_Treino (CPF_Aluno, CPF_Instrutor) VALUES ('98765432111', '99988877766');
+INSERT INTO Ficha_de_Treino (CPF_Aluno, CPF_Instrutor) VALUES ('45612378922', '22233344455');
+INSERT INTO Ficha_de_Treino (CPF_Aluno, CPF_Instrutor) VALUES ('78945612333', '77788899900');
+INSERT INTO Ficha_de_Treino (CPF_Aluno, CPF_Instrutor) VALUES ('32165498744', '55566677788');
+INSERT INTO Ficha_de_Treino (CPF_Aluno, CPF_Instrutor) VALUES ('74185296355', '99988877766');
 
 -- Acompanhante(CPF, Nome)
 INSERT INTO ACOMPANHANTE VALUES ('12345678900', 'Ana Pereira');
