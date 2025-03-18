@@ -3,7 +3,7 @@
 CREATE TABLE Plano (
     ID NUMBER(2,0) CONSTRAINT PK_Plano PRIMARY KEY,
     Nome VARCHAR2(50),
-    Valor FLOAT
+    Valor FLOAT NOT NULL
 );
 
 CREATE TABLE Personal_Trainer (
@@ -47,7 +47,7 @@ CREATE TABLE Aluno (
 
 CREATE TABLE Funcionario (
     CPF_func VARCHAR2(11) CONSTRAINT PK_Funcionario PRIMARY KEY,
-    Salario INT,
+    Salario INT NOT NULL,
     CPF_chefe VARCHAR2(11),
     CONSTRAINT FK_CPF_funcF FOREIGN KEY (CPF_func) REFERENCES Usuario_da_Academia(CPF) ON DELETE CASCADE,
     CONSTRAINT FK_CPF_chefeF FOREIGN KEY (CPF_chefe) REFERENCES Funcionario(CPF_func) ON DELETE CASCADE
