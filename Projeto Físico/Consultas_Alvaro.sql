@@ -19,3 +19,20 @@ INNER JOIN (SELECT CPF_ALUNO, DATA
     		FROM AVALIACAO_FISICA 
     		WHERE EXTRACT(MONTH FROM DATA) = 3
 ) AF ON A.CPF = AF.CPF_ALUNO;
+
+--Procedimento com SQL embutida e parâmetro
+--Mostrar o numero de alunos por personal trainer
+CREATE OR REPLACE PROCEDURE Get_Alunos_Por_PT AS
+BEGIN
+    FOR reg IN (
+        SELECT PT.Nome AS Personal_Trainer, COUNT(A.CPF) AS Num_Alunos
+        FROM Personal_Trainer PT
+        LEFT JOIN Aluno A ON (PT.CREF = A.CREF_PT)
+        GROUP BY PT.Nome
+    ) LOOP
+        DBMS_OUTPUT.PUT_LINE('Personal Trainer: ' || reg.Personal_Trainer || ' | Número de Alunos: ' || reg.Num_Alunos);
+    END LOOP;
+END;
+/
+
+CALL Get_Alunos_Por_PT;
