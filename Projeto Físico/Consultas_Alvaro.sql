@@ -25,14 +25,14 @@ INNER JOIN (SELECT CPF_ALUNO, DATA
 CREATE OR REPLACE PROCEDURE Get_Alunos_Por_PT AS
 BEGIN
     FOR reg IN (
-        SELECT PT.Nome AS Personal_Trainer, COUNT(A.CPF) AS Num_Alunos
-        FROM Personal_Trainer PT
-        LEFT JOIN Aluno A ON (PT.CREF = A.CREF_PT)
-        GROUP BY PT.Nome
+        SELECT PT.NOME AS PERSONAL_TRAINER, COUNT(A.CPF) AS NUM_ALUNOS
+        FROM PERSONAL_TRAINER PT
+        LEFT JOIN ALUNO A ON (PT.CREF = A.CREF_PT)
+        GROUP BY PT.NOME
     ) LOOP
-        DBMS_OUTPUT.PUT_LINE('Personal Trainer: ' || reg.Personal_Trainer || ' | Número de Alunos: ' || reg.Num_Alunos);
+        DBMS_OUTPUT.PUT_LINE('Personal Trainer: ' || reg.PERSONAL_TRAINER || ' | Número de Alunos: ' || reg.NUM_ALUNOS);
     END LOOP;
 END;
 /
-
+    
 CALL Get_Alunos_Por_PT;
