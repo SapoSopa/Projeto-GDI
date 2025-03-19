@@ -1,0 +1,10 @@
+-- Consulta normal
+SELECT A.CPF
+FROM ALUNO A
+WHERE NOT EXISTS (
+    SELECT P.CREF
+    FROM PERSONAL_TRAINER P
+    WHERE A.CREF_PT = P.CREF
+)
+
+-- Consulta PL-SQL
