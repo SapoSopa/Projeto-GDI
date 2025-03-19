@@ -1,4 +1,7 @@
--- Consulta normal
+-- Consulta normal - Anti-Join
+
+-- Mostra o CPF dos alunos que não possuem personal trainer
+
 SELECT A.CPF
 FROM ALUNO A
 WHERE NOT EXISTS (
@@ -7,4 +10,24 @@ WHERE NOT EXISTS (
     WHERE A.CREF_PT = P.CREF
 )
 
--- Consulta PL-SQL
+-- Consulta PL-SQL - Trigger
+
+-- Impede do Aluno que possui um plano ativo de contratar outro
+CREATE OR REPLACE TRIGGER verificar_plano_aluno
+BEFORE INSERT ON Contratou
+FOR EACH ROW
+DECLARE
+    qtd_planos INT;
+BEGIN
+    -- Conta quantos planos o aluno já possui
+    SELECT COUNT(*) INTO qtd_planos 
+    FROM Contratou 
+    WHERE CPF_ALUNO = :NEW.CPF_ALUNO;
+    
+    -- Se já existir um plano, lança erro
+    IF qtd_planos > 0 THEN
+        RAISE_APPLICATION_ERROR(-20001, 'Erro: O aluno já possui um plano ativo');
+    END IF;
+END;
+/
+
