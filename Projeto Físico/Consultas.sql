@@ -1,53 +1,57 @@
--- Consultas do Henrique César
-
 -- GROUP BY / HAVING
-SELECT p.nome, COUNT(a.cpf) AS qtd_alunos
-FROM plano p
-JOIN aluno a ON p.id = a.id_plano
-GROUP BY p.nome
-HAVING COUNT(a.cpf) >= 3;
+-- Mostra cpf do instrutor com o número de alunos avaliados em um dia que seja maior ou igual a 2
+SELECT T.CPF_INSTRUTOR, COUNT(T.CPF_ALUNO), AF.DATA
+FROM TEM T JOIN AVALIACAO_FISICA AF ON T.CPF_INSTRUTOR = AF.CPF_INSTRUTOR
+GROUP BY T.CPF_INSTRUTOR, AF.DATA
+HAVING COUNT(T.CPF_ALUNO) >= 2;
 
 -- JUNÇÃO INTERNA
-SELECT UA.Nome AS Aluno, PT.Nome AS Personal_Trainer
-FROM Aluno A
-INNER JOIN Usuario_da_Academia UA ON A.CPF = UA.CPF
-INNER JOIN Personal_Trainer PT ON A.CREF_PT = PT.CREF;
+-- Mostra o nome dos alunos que contrataram o plano mensal
+SELECT U.NOME
+FROM USUARIO_DA_ACADEMIA U INNER JOIN ALUNO A ON (U.CPF = A.CPF) INNER JOIN CONTRATOU C ON (A.CPF = C.CPF_ALUNO)
+WHERE A.ID_PLANO = 1;
 
 -- JUNÇÃO EXTERNA
+-- Mostra o nome do aluno e do personal de cada aluno
 SELECT UA.Nome AS Aluno, PT.Nome AS Personal_Trainer
 FROM Aluno A
 LEFT JOIN Usuario_da_Academia UA ON A.CPF = UA.CPF
 LEFT JOIN Personal_Trainer PT ON A.CREF_PT = PT.CREF;
 
 -- SEMI-JUNÇÃO
-SELECT UA.Nome
-FROM Usuario_da_Academia UA
-WHERE EXISTS (
+-- Mostra o nome e cpf dos alunos que tem personal trainer
+Select A.CPF, UA.NOME
+FROM Aluno A, Usuario_da_academia UA
+WHERE A.CPF = UA.CPF
+AND EXISTS(
     SELECT *
-    FROM Avaliacao_Fisica AF
-    WHERE AF.CPF_Aluno = UA.CPF
+    FROM Personal_Trainer PT
+    Where A.CREF_PT = PT.CREF 
 );
 
 -- ANTI-JUNÇÃO
-SELECT UA.Nome
+-- Mostra uma tabela com o nome e cpf dos alunos sem Personal Trainer
+SELECT UA.Nome, UA.CPF
 FROM Usuario_da_Academia UA
 JOIN Aluno A ON UA.CPF = A.CPF
 WHERE NOT EXISTS (
-    SELECT *
-    FROM Avaliacao_Fisica AF
-    WHERE AF.CPF_Aluno = A.CPF
+    SELECT P.CREF
+    FROM PERSONAL_TRAINER P
+    WHERE A.CREF_PT = P.CREF
 );
 
 -- SUBCONSULTA ESCALAR
-SELECT UA.Nome
-FROM Funcionario F, Usuario_da_Academia UA
-WHERE F.CPF_func = UA.CPF
-  AND F.Salario >= (
-    SELECT AVG(Salario)
-    FROM Funcionario
-    );
+-- Mostra o salário do RH
+Select Salario
+From Funcionario
+Where CPF_Func = ANY (
+    Select A.CPF
+    From Administracao A
+    Where FUNCAO = 'RH'
+);
 
 -- SUBCONSULTA DE LINHA
+-- Mostra todas as informações de usuario da academia do aluno mais velho da academia
 SELECT *
 FROM Usuario_da_academia
 WHERE Nascimento = (
@@ -57,21 +61,23 @@ WHERE Nascimento = (
 );
 
 -- SUBCONSULTA DE TABELA
-SELECT * 
-FROM Aluno 
-WHERE ID_Plano = (
-    SELECT ID_Plano 
-    FROM Aluno
-    WHERE CPF = '12345678900'
-);
+-- Mostra todos os alunos que realizaram avaliação física no mês de março e a data
+SELECT U.NOME, AF.DATA
+FROM USUARIO_DA_ACADEMIA U INNER JOIN ALUNO A ON (U.CPF = A.CPF)
+INNER JOIN (SELECT CPF_ALUNO, DATA 
+    		FROM AVALIACAO_FISICA 
+    		WHERE EXTRACT(MONTH FROM DATA) = 3
+) AF ON A.CPF = AF.CPF_ALUNO;
 
 -- OPERAÇÃO DE CONJUNTO
+-- Mostra funcionários que também são alunos
 SELECT CPF 
 FROM Aluno
 INTERSECT
 SELECT CPF_func FROM Funcionario;
 
 -- Procedimento (e sua chamada):
+-- Atualizar Salário
 CREATE OR REPLACE PROCEDURE Atualiza_Salario (
     p_CPF_func VARCHAR2,
     p_Novo_Salario INT
@@ -83,6 +89,38 @@ BEGIN
     WHERE CPF_func = p_CPF_func;
 END;
 
+CALL Atualiza_Salario('77788899900', 5000);
+
+--Mostrar o numero de alunos por personal trainer
+CREATE OR REPLACE PROCEDURE Get_Alunos_Por_PT AS
 BEGIN
-    Atualiza_Salario('77788899900', 5000);
+    FOR reg IN (
+        SELECT PT.NOME AS PERSONAL_TRAINER, COUNT(A.CPF) AS NUM_ALUNOS
+        FROM PERSONAL_TRAINER PT
+        LEFT JOIN ALUNO A ON (PT.CREF = A.CREF_PT)
+        GROUP BY PT.NOME
+    ) LOOP
+        DBMS_OUTPUT.PUT_LINE('Personal Trainer: ' || reg.PERSONAL_TRAINER || ' | Número de Alunos: ' || reg.NUM_ALUNOS);
+    END LOOP;
+END;
+    
+CALL Get_Alunos_Por_PT;
+
+-- Trigger
+-- Impede do Aluno que possui um plano ativo de contratar outro
+CREATE OR REPLACE TRIGGER verificar_plano_aluno
+BEFORE INSERT ON Contratou
+FOR EACH ROW
+DECLARE
+    qtd_planos INT;
+BEGIN
+    -- Conta quantos planos o aluno já possui
+    SELECT COUNT(*) INTO qtd_planos 
+    FROM Contratou 
+    WHERE CPF_ALUNO = :NEW.CPF_ALUNO;
+    
+    -- Se já existir um plano, lança erro
+    IF qtd_planos > 0 THEN
+        RAISE_APPLICATION_ERROR(-20001, 'Erro: O aluno já possui um plano ativo');
+    END IF;
 END;
