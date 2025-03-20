@@ -106,6 +106,33 @@ END;
     
 CALL Get_Alunos_Por_PT;
 
+-- Procedimento que recebe o CPF de um aluno e retorna o nome do plano, o valor e o desconto aplicado no contrato mais recente.
+CREATE OR REPLACE PROCEDURE GetPlanoAluno (
+    p_CPF_Aluno IN VARCHAR2,
+    p_Nome_Plano OUT VARCHAR2,
+    p_Valor OUT FLOAT,
+    p_Desconto OUT NUMBER
+) AS
+BEGIN
+    SELECT P.Nome, P.Valor, C.Desconto
+    INTO p_Nome_Plano, p_Valor, p_Desconto
+    FROM Plano P
+    JOIN Contratou C ON P.ID = C.ID_Plano
+    WHERE C.CPF_Aluno = p_CPF_Aluno
+      AND C.Data = (SELECT MAX(Data) FROM Contratou WHERE CPF_Aluno = p_CPF_Aluno);
+EXCEPTION
+    WHEN NO_DATA_FOUND THEN
+        p_Nome_Plano := NULL;
+        p_Valor := NULL;
+        p_Desconto := NULL;
+    WHEN OTHERS THEN
+        p_Nome_Plano := 'Erro';
+        p_Valor := -1;
+        p_Desconto := -1;
+END GetPlanoAluno;
+
+
+
 -- Trigger
 -- Impede do Aluno que possui um plano ativo de contratar outro
 CREATE OR REPLACE TRIGGER verificar_plano_aluno
