@@ -10,6 +10,13 @@ WHERE NOT EXISTS (
     WHERE A.CREF_PT = P.CREF
 )
 
+SELECT AF.CPF_Aluno, AF.CPF_Instrutor
+FROM  AVALIACAO_FISICA AF 
+WHERE (AF.CPF_Aluno, AF.CPF_Instrutor) in {
+    SELECT CPF_Aluno, CPF_Instrutor
+    FROM Ficha_de_Treino
+}
+
 -- Consulta PL-SQL - Trigger
 
 -- Impede do Aluno que possui um plano ativo de contratar outro
